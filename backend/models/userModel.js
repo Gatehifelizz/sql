@@ -28,16 +28,7 @@ const User = sequelize.define('User', {
         allowNull: false,
         defaultValue: false,
     },
-    isSeller: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-    },
-    isBuyer: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
-        defaultValue: true,
-    }
+ 
 
 },
     {

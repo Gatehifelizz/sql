@@ -1,13 +1,21 @@
 import { Sequelize } from "sequelize";
 import color from "colors";
+import dotenv from "dotenv";
+
+
+dotenv.config();
+
+const dbconnection = new Sequelize(
+    process.env.DB_URI,
+    {
+        host:"localhost",
+        dialect: 'mysql',
+        logging: console.log,
+    }
+);
 
 const connectdb = async () => {
     try{ 
-        const dbconnection  = new Sequelize(process.env.DB_URI, {
-            dialect: 'mysql',
-            logging: console.log,
-        });
-
         //test connection
         await dbconnection.authenticate();
         console.log(`Database connected: ${dbconnection.config.database}`.cyan.underline);
@@ -17,4 +25,5 @@ const connectdb = async () => {
     }
 };
 
+export { dbconnection};
 export default connectdb;

@@ -1,22 +1,22 @@
-import sequelize from "../config/db.js";
-import User from "./userModel";
-import Product from "./productModel";
-import Order from "./orderModel";
-import OrderItem from "./orderItemModel";
-import Review from "./reviewModel";
+import {dbconnection as sequelize} from "../config/db.js";
+import User from "./userModel.js";
+import Product from "./productModel.js";
+import Order from "./orderModel.js";
+import OrderItem from "./orderitemModel.js";
+import Review from "./reviewModel.js";
 
 Product.hasMany(Review, {foreignKey: "productId", as: "reviews"});
 Review.belongsTo(Product, {foreignKey: "productId" , as: "product"});
 
-Product.hasMany(OrderItem, {foreignKey: "userId", as: "orderItems"});
+Product.hasMany(OrderItem, {foreignKey: "productId", as: "orderItems"});
 OrderItem.belongsTo(Product, {foreignKey: "productId", as: "product"});
 
 
-User.hasMany(Order, {foreignKey: "userId", as: "reviews"});
+User.hasMany(Order, {foreignKey: "userId", as: "useOrders"});
 Order.belongsTo(User, {foreignKey: "userId", as: "user"});
 
-User.hasMany(Review, {foreignKey: "userId", as: "reviews"});
-Review.belongsTo(User, {foreignKey: "userId", as: "user"});
+User.hasMany(Review, {foreignKey: "userId", as: "userReviews"});
+Review.belongsTo(User, {foreignKey: "userId", as: "reviewUser"});
 
 Order.hasMany(OrderItem, {foreignKey: "orderId", as: "orderItems"});
 OrderItem.belongsTo(Order, {foreignKey: "orderId", as: "order"});

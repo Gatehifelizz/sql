@@ -1,5 +1,5 @@
 import { Sequelize, Model, DataTypes } from "sequelize";
-import User from "./userModel";
+import User from "./userModel.js";
 
 const sequelize = new Sequelize(
   "mysql://root:sequelizer321@localhost:3306/mystore"
@@ -105,7 +105,4 @@ const Order = sequelize.define(
 console.log(Order === sequelize.models.Order);
 export default Order;
 
-(async () => {
-    await sequelize.sync({ force: true });
-    console.log("model  synchronized successfully.");
-})
+

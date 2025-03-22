@@ -1,6 +1,6 @@
 import { Sequelize, Model, DataTypes } from "sequelize";
-import sequelize from "../config/db.js";
-import Product from "./productModel";
+
+import Product from "./productModel.js";
 
 const sequelize = new Sequelize(
     "mysql://root:sequelizer321@localhost:3306/mystore"

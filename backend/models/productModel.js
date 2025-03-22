@@ -1,7 +1,7 @@
 import { Sequelize, Model, DataTypes }  from "sequelize";
-import User from "./userModel";
+import User from "./userModel.js";
 
-const sequelize = Sequelize('mysql://root:sequelizer321@localhost:3306/mystore')
+const sequelize = new Sequelize('mysql://root:sequelizer321@localhost:3306/mystore')
 
 const Product = sequelize.define('Product', {
     userId: {
